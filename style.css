@@ -1,0 +1,251 @@
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+  margin: 0;
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-family: 'Jersey 15', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 16,
+    "SCAN" -3;}
+
+
+body {
+  font-family: 'Patrick Hand', Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 50px 20px;
+}
+
+#loading, #loading * {
+  font-family: 'Jersey 15', sans-serif;
+}
+
+#loading {
+  font-family: 'Jersey 15', sans-serif;
+}
+
+#age-counter {
+  font-family: 'Jersey 15', sans-serif;
+  font-size: 10rem;
+}
+
+#loading, #landing {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  color: #EFD033;
+}
+
+#landing {
+  position: fixed;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  text-align: center;
+  z-index: 1;
+}
+
+#landing h1 {
+  font-family: 'Jersey 15', sans-serif;
+    font-size: 6rem;
+  color: #EFD033 ;
+  margin-bottom: 0;
+  line-height: 1;
+}
+#landing #clock {
+  font-family: "Roboto Flex", sans-serif;
+  font-variation-settings: "GRAD" -200;
+  font-size: 6rem;
+  color: #EFD033;
+  margin: 0;
+  line-height: 1;
+}
+
+#landing #subtitle {
+  font-family: 'Jersey 15', sans-serif;
+  font-size: 0.8rem;
+  color: #EFD033;
+  font-weight: normal;
+  margin: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+
+#letter {
+  position: fixed; /* stay in the viewport center */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  cursor: pointer;
+  z-index: 9999;
+  display: none;
+}
+
+#bg-video-2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#letter-content p {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+}
+
+
+#letter-content {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0;
+  background-image: url('gray.png');
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
+}
+
+
+#letter-content p {
+  height: auto;
+  max-width: 800px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.letter-slide {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.letter-slide:first-child {
+  align-items: flex-start;
+}
+
+.letter-slide p {
+  height: auto;
+  max-width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+
+#letter-content p.line-1 {
+  font-size: 14rem;
+  font-family: "Instrument Serif", serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+  line-height: 0.85;
+}
+#letter-content p.line-2 { font-size: 2.5rem; font-family: 'Jersey 15', sans-serif; color: #ffdeeb; }
+#letter-content p.line-3 { font-size: 2rem;   font-family: "Instrument Serif", serif; color: #ffffff; }
+#letter-content p.line-4 { font-size: 2.2rem; font-family: 'DM Serif Display', serif; color: #ffdeeb; }
+#letter-content p.line-5 { font-size: 11rem; font-family: 'Jersey 15', sans-serif; color: #b48ead; }
+#letter-content p.line-6 { font-size: 5rem; font-family: 'DM Serif Display', serif; color: #ff6340; }
+
+
+.line-1-img {
+  position: absolute;
+  left: 1%;
+  bottom: 1%;
+  width: 30vw;
+  height: auto;
+  z-index: -1;
+}
+
+
+.line-5-img {
+  position: absolute;
+  right: 0%;
+  bottom: 1%;
+  width: 50vw;
+  height: auto;
+  z-index: -1;
+}
+
+
+.line-3-img {
+  position: absolute;
+  right: 60%;
+  bottom: 1%;
+  width: 35vw;
+  height: auto;
+  z-index: -1;
+}
+
+
+.line-6-img {
+  position: absolute;
+  left: 50%;
+  bottom: 1%;
+  width: 40vw;
+  height: auto;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+#puppy {
+  display: inline-block;
+  pointer-events: auto;
+}
+
+
+html, body {
+  min-height: 100%;
+  background-image: url('gray.png');
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
+  background-color: transparent;
+  overscroll-behavior: none;
+}

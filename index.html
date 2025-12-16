@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>i love you maple 🎂🤍 are you here again??</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Jersey+15&family=Roboto+Flex:opsz,wght,GRAD,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,-200,96,468,79,-203,738,514,712&family=Shrikhand&family=Titan+One&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="flower.mp4" type="video/mp4">
+  </video>
+
+  <!-- Loading Screen -->
+  <div id="loading">
+    <h1>loading...</h1>
+    <p><span id="age-counter">0</span></p>
+  </div>
+
+  <!-- Landing Page -->
+  <div id="landing" style="display:none;">
+    <div class="landing-content">
+      <h1 id="greeting">
+        <span id="hi-text">HI </span><span id="puppy">PUPPY</span>
+      </h1>
+      <p id="clock">00:00:00</p>
+      <p id="subtitle">look it's almost your birthday!!!!</p>
+    </div>
+  </div>
+
+  <!-- Letter Icon -->
+  <div id="letter" style="display:none; cursor:pointer;">✉️</div>
+
+  <!-- Letter Content -->
+  <div id="letter-content" style="display:none;">
+    <section class="letter-slide"><p class="line-1">DEAR MAPLE</p></section>
+    <section class="letter-slide"><img src="pengu1.png" alt="Pengu" class="line-1-img"><p class="line-2">you are so hardworking and smart and creative and dedicated to the things you love</p></section>
+    <section class="letter-slide"><img src="choco.png" alt="Choco" class="line-3-img"><p class="line-3">i love hearing every stupid little thing you say and i love when you turn on the volume for me and i love you when you find me in my dreams and i love when you laugh and i love when youre sleepy and i love when you study bad dragons and i love when you look at this again and i love when you wake me up and i love when you sing and i love when you take your glasses off and i love when you eat apples in the kitchen and i love when you draw and i love when you pick me flowers and i love when you love pinkspot and i love when you kiss me and i love when youre so good at league of legends and i love when you eat ice cream and i love when you listen to music and i love when you talk to me and i love when you sleep with me and i love when you work and i love when you breathe and i love you so much.</p></section>
+    <section class="letter-slide"><p class="line-4">you worked so hard to get where you are, but im so proud of everything youve done to reach 21 whole years.
+i love you so much maple i hope all of your birthday wishes come true. you make me so happy, and i am so grateful i get to have you in my life. thank you for spending so much time with me and loving me and being so thoughtful and caring and sharing your life with me.</p></section>
+    <section class="letter-slide"><img src="Adobe Express - file(1).png" alt="Design" class="line-5-img"><p class="line-5">happy 21st birthday dowon</p></section>
+    <section class="letter-slide"><img src="us.png" alt="Us" class="line-6-img"><p class="line-6">i love you</p></section>
+  </div>
+
+<script>
+// MODE LOGIC
+function getBirthdayMode() {
+  const now = new Date();
+  // Convert to EST
+  const estNow = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+
+  const birthdayMidnight = new Date(estNow.getFullYear(), 11, 16, 0, 0, 0); // Month 11 = December
+
+  return estNow.getTime() < birthdayMidnight.getTime() ? "pre" : "post";
+}
+
+const mode = getBirthdayMode();
+console.log("mode:", mode);
+
+// UPDATE UI BASED ON MODE
+const hiText = document.getElementById("hi-text");
+const puppyText = document.getElementById("puppy");
+const subtitle = document.getElementById("subtitle");
+const letter = document.getElementById("letter");
+
+function updatePrePostUI() {
+  if (mode === "pre") {
+    hiText.textContent = "HI ";
+    puppyText.textContent = "PUPPY";
+    subtitle.textContent = "look maple it's almost your birthday !!! <33";
+    letter.style.display = "none";
+    letterFloat.play();
+  } else {
+    hiText.textContent = "";
+    puppyText.textContent = "12/16/2025";
+    subtitle.textContent = "HAPPY 21ST BIRTHDAY MAPLE I LOVE YOU SO MUCH";
+    letter.style.display = "block";
+    letterFloat.pause(0);
+      requestAnimationFrame(() => {
+    gsap.set(letter, { y: 0 });
+    letterFloat.play();
+      });
+  }
+}
+
+// LETTER HOVER EFFECT
+letter.addEventListener("mouseenter", () => {
+  gsap.to(letter, {
+    scale: 1.15,
+    duration: 0.2,
+    ease: "power2.out"
+  });
+
+  letterFloat.timeScale(1.8);
+});
+
+letter.addEventListener("mouseleave", () => {
+  gsap.to(letter, {
+    scale: 1,
+    duration: 0.25,
+    ease: "power2.out"
+  });
+
+  letterFloat.timeScale(1);
+});
+
+// CLOCK FUNCTIONS
+function startLiveClock() {
+  function updateClockET() {
+    const now = new Date();
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York',
+      hour12: true,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    const parts = formatter.formatToParts(now);
+    const hour = parts.find(p => p.type === 'hour').value;
+    const minute = parts.find(p => p.type === 'minute').value;
+    const second = parts.find(p => p.type === 'second').value;
+    const dayPeriod = parts.find(p => p.type === 'dayPeriod').value;
+    document.getElementById("clock").textContent = `${hour}:${minute}:${second} ${dayPeriod}`;
+  }
+  setInterval(updateClockET, 1000);
+  updateClockET();
+}
+
+function showFrozenMidnight() {
+  document.getElementById("clock").textContent = "12:00:00 AM";
+}
+
+// LOADING ANIMATION
+const targetAge = mode === "pre" ? 20 : 21;
+
+gsap.to("#age-counter", {
+  innerText: targetAge,
+  duration: 5,
+  snap: "innerText",
+  ease: "power1.inOut",
+  onUpdate: () => gsap.fromTo("#age-counter", { scale: 0.9 }, { scale: 1.2, duration: 0.15, yoyo: true, repeat: 0 }),
+  onComplete: () => {
+    gsap.to("#loading", {
+      opacity: 0,
+      duration: 1,
+      onComplete: () => {
+        document.getElementById("loading").style.display = "none";
+        const landing = document.getElementById("landing");
+        landing.style.display = "block";
+        gsap.from(landing, { opacity: 0, y: 50, duration: 1 });
+        gsap.from(subtitle, { opacity: 0, y: 20, duration: 1, delay: 0.5 });
+
+        updatePrePostUI();
+        if (mode === "pre") {
+          startLiveClock();
+        } else {
+          showFrozenMidnight();
+        }
+      }
+    });
+  }
+});
+gsap.registerPlugin(ScrollTrigger);
+
+// LETTER FLOATING (idle)
+let letterFloat = gsap.to("#letter", {
+  y: -12,
+  duration: 1,
+  ease: "sine.inOut",
+  repeat: -1,
+  yoyo: true,
+  paused: true
+});
+// CLICKABLE LETTER
+letter.addEventListener("click", () => {
+  const landing = document.getElementById("landing");
+  const bg1 = document.getElementById("bg-video");
+  const letterContent = document.getElementById("letter-content");
+
+  gsap.to([landing, letter], { opacity: 0, scale: 0.8, duration: 0.8, ease: "power2.inOut", onComplete: () => {
+    landing.style.display = "none";
+    letter.style.display = "none";
+    bg1.style.display = "none";
+    letterContent.style.display = "block";
+
+    // ScrollTrigger per section
+    gsap.utils.toArray(".letter-slide").forEach(section => {
+      gsap.from(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 30%",
+          end: "bottom 30%",
+          scrub: true,
+          pin: true
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1
+      });
+    });
+  }});
+});
+
+// PUPPY VIBRATION
+let vibrateTween;
+puppyText.addEventListener("mouseenter", () => {
+  vibrateTween?.kill();
+  vibrateTween = gsap.to(puppyText, {
+    x: 2,
+    y: -2,
+    duration: 0.04,
+    repeat: -1,
+    yoyo: true,
+    ease: "none"
+  });
+});
+puppyText.addEventListener("mouseleave", () => {
+  vibrateTween?.kill();
+  gsap.set(puppyText, { x: 0, y: 0 });
+});
+if (mode === "post") {
+  puppyText.setAttribute("title", "WHOS A GOOD PUPPY :3");
+  puppyText.style.setProperty('font-family', "'Bagel Fat One', system-ui", 'important');
+  subtitle.style.fontFamily = "'Roboto Flex', sans-serif";
+}
+
+
+// DRIFT
+window.addEventListener("load", () => {
+  gsap.to("#letter-content", {
+    backgroundPosition: "0px 20px",
+    duration: 5,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
+});
+gsap.to("#letter-content", {
+  backgroundPosition: "60px 60px",
+  duration: 4,
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut"
+});
+</script>
+</body>
+</html>
